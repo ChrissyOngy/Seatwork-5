@@ -1,0 +1,7 @@
+.movie-list > li{
+	display: inline;
+	width: auto;
+}
+.thumb > h4{
+	text-align: center;
+}

@@ -1,0 +1,194 @@
+<html>
+<head>
+    <title>Module6 Team9</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    
+</head>
+
+<body>
+<script type="text/x-handlebars-template" src="/static/js/vendors/handlebars.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/jquery.js"></script>
+<style>
+  
+  body{
+    background: url("/static/img/bg1.jpg") no-repeat fixed;
+    overflow-x: hidden;
+    background-size: cover;
+  }
+ 
+  #search-query{
+    background-color:#1A1A1A;
+    transition:0.4s;
+    -webkit-transition:0.4s;
+    border:0px;
+    width:200px;
+  }
+
+  #search-query:focus{
+    background-color:#E7E7E7;
+    color:#000;
+    width:250px;
+    border:0px;
+    transition:0.4s;
+    -webkit-transition:0.4s;
+  }
+
+  #sbtn{
+    background-color:#A09D9D; 
+    border: 0px;
+  }
+
+  #sbtn:hover{
+    background-color:#E7E7E7; 
+    border: 0px;
+  }
+
+  #now_showing,
+  #upcoming,
+  #popular,
+  #top_rated {
+    color: #B9B9B9;
+  }
+
+  #txt:hover{
+    color: #ffffff;
+    transition:0.4s;
+    -webkit-transition:0.4s;
+  }
+
+  #tab:hover{
+    color: #ffffff;
+    background-color: #503455;
+    transition:0.2s;
+    -webkit-transition:0.2s;
+  }
+
+
+  #movie-item-result{
+    background-color: rgba(0,0,0, 0.5);
+    padding:10px 10px 15px 10px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+    transition:0.4s;
+    -webkit-transition:0.4s;
+    min-height:350px;
+
+  }
+
+  #movie-item-result:hover{
+    transition:0.5s;
+    -webkit-transition:0.5s;
+    background-color: rgba(0,0,0, 0.8);
+  }
+
+  #movie-image{
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(0%); /* Chrome 19+ & Safari 6+ */
+    transition:0.5s;
+    -webkit-transition:0.5s;
+  }
+  
+  #movie-image:hover{
+    filter: none;
+  -webkit-filter: grayscale(100%);
+  transition:0.5s;
+    -webkit-transition:0.5s;
+  }
+</style>
+
+
+
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://getbootstrap.com/">Module Six</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li id="tab" class="active"><a href="#" id="now_showing">Now Showing</a></li>
+              <li id="tab" ><a href="#" id="upcoming">Upcoming</a></li>
+              <li id="tab" ><a href="#" id="popular">Popular</a></li>
+              <li id="tab" ><a href="#" id="top_rated">Top Rated</a></li>
+            </ul>
+
+            <form class="navbar-form navbar-right" role="search" id='form-search'>
+                <div class="form-group">
+                  <input type="text" id="search-query" class="form-control input-query" name='query' placeholder="Search Movie">
+                </div>
+                <button id="sbtn" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+            
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+
+
+  <center>
+  <script src="/static/js/vendors/handlebars.js"></script>
+  {%raw%}
+  <script type="text/x-handlebars-template" id="movie">
+
+    {{#each this}}
+        <div id="movie-item-result" class="container col-md-3 portfolio-item">
+            <center><h4>
+               <a style="color:#fff;" href="/movie/movie.id">{{title}}</a>
+            </h4></center>
+              <a href="/movie/movie.id">
+                <center><img id="movie-image" class="img-responsive" width="170" src="{{image}}" alt=""></center>
+             </a>
+        </div>
+    {{/each}}
+  </script>
+
+
+  <script type="text/x-handlebars-template" id="header">
+         <div class="col-md-12">
+            <h4 style="color:#E6E6E6;" class="page-header">{{head}}</h4>
+         </div>
+  </script>
+
+
+  {%endraw%}
+
+  
+
+
+  <div class="container" style='top: 70px; position: relative;'>
+        <div align="center" class="movie-list">
+        </div>
+    </div><!-- /.container -->
+  </center>
+
+
+
+<br><br><br><br><br>
+
+
+  <!-- Footer -->
+  <div id="footer-style" style="margin-bottom:-20px; background-color:rgba(34,34,34,0.6); border:0px; border-radius:0px;" class="footer-style navbar navbar-default navbar-bottom";>
+    <div class="container">
+      <p class="navbar-text text-right" style="font: 10pt Tahoma; color: #fff;"> Site built by Team 9 :) </p>
+    </div>
+  </div>
+
+
+
+
+    <script src="/static/js/vendors/jquery.js"></script>
+    <script src="/static/js/vendors/bootstrap.min.js"></script>
+    <script src="/static/js/app.js"></script>
+
+</body>
+
+</html>
